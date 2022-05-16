@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 # Copied from https://github.com/jaor/xmobar/issues/239#issuecomment-233206552
 # Detects the width of running trayer-srg window (xprop name 'panel')
 # and creates an XPM icon of that width, 1px height, and transparent.

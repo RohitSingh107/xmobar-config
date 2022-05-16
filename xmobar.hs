@@ -45,10 +45,9 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
                         -- Check for pacman updates (script found in .local/bin)
                     , Run Com ".local/bin/pacupdate" [] "pacupdate" 36000
                         -- Time and date
-                    -- , Run Date "  %b %d %Y - (<fc=#00ff00>%H:%M</fc>) " "date" 50
-                    , Run Date " (<fc=#00ff00>%H:%M</fc>)  %b %d %Y " "date" 50
+                    , Run Date "  %b %d %Y - (<fc=#00ff00>%H:%M</fc>) " "date" 50
                         -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
-                    , Run Com "/home/rohit/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
+                    , Run Com "/home/rohits/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
                         -- Prints out the left side items such as workspaces, layout, etc.
                     , Run UnsafeStdinReader
 
