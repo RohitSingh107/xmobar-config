@@ -1,0 +1,7 @@
+.stack-work/
+stack.yaml.lock
+xmobar
+xmobar-git/
+xmobar.hi
+xmobar.o
+xmobar3.hs
