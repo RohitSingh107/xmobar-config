@@ -38,7 +38,7 @@ config = defaultConfig {
   , border = TopB
   , bgColor = "black"
   , fgColor = "grey"
-  , alpha = 90
+  , alpha = 130
   , position = Top
   , textOffset = -1
   , iconOffset = -1
@@ -59,14 +59,16 @@ config = defaultConfig {
                                         "--normal","green","--high","red"] 10
                , Run $ Network "eth1" ["-L","0","-H","32",
                                         "--normal","green","--high","red"] 10
-               , Run $ Cpu ["-L","3","-H","50",
-                             "--normal","green","--high","red"] 10
+
+               , Run $ Cpu ["-t", "  cpu: (<fc=#ff6c6b><total>%</fc>)","-H","50","--high","red"] 20
                , Run $ Memory ["-t","Mem: <usedratio>%"] 10
+               , Run $ Memory ["-t", "  mem: <fc=#daa520><used></fc>M (<fc=#ff6c6b><usedratio>%</fc>)"] 20
                , Run $ Swap [] 10
                , Run $ Com "uname" ["-s","-r"] "" 36000
                , Run $ Date "%a %b %_d %Y %H:%M:%S" "date" 10
                , Run HelloWorld
                , Run $ UnsafeStdinReader
+               , Run $ DiskU [("/", " hdd: <fc=#00ff00><free></fc> free")] [] 60
 
                , Run $ Com "/home/rohits/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
                , Run $ Battery        [ "--template" , "Batt: <acstatus>"
@@ -85,12 +87,16 @@ config = defaultConfig {
                                                    -- charged status
                                                    , "-i"   , "<fc=#006000>Charged</fc>"
                              ] 50
-
               ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = "%cpu% | %memory% * %swap% |  }\
-               \ %UnsafeStdinReader% { <fc=#ee9a00>%date%</fc>| %battery% | %uname% | %trayerpad% "
+  , template = "<fc=#ecbe7b><action=`alacritty -e htop`>%cpu%</action></fc> |\
+			   \ <fc=#a9a1e1><action=`gparted`>%disku%</action></fc> \
+               \ <fc=#cc8899><action=`alacritty -e htop`>%memory%</action></fc>|  }\
+               \ %UnsafeStdinReader% { \
+			   \ <fc=#98be65><action=`stacer`>%battery%</action></fc> |\
+			   \ <fc=#46d9ff><action=`gsimplecal`>%date%</action></fc> \
+			   \ %trayerpad% "
 }
 
 main :: IO ()
