@@ -65,7 +65,7 @@ config = defaultConfig {
                , Run $ Memory ["-t", "  mem: <fc=#daa520><used></fc>M (<fc=#ff6c6b><usedratio>%</fc>)"] 20
                , Run $ Swap [] 10
                , Run $ Com "uname" ["-s","-r"] "" 36000
-               , Run $ Date "%a %b %_d %Y %H:%M:%S" "date" 10
+               , Run $ Date "  %b %d %Y - (<fc=#00ff00>%H:%M</fc>) " "date" 50
                , Run HelloWorld
                , Run $ UnsafeStdinReader
                , Run $ DiskU [("/", " hdd: <fc=#00ff00><free></fc> free")] [] 60
