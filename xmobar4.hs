@@ -38,7 +38,7 @@ config = defaultConfig {
   , border = TopB
   , bgColor = "black"
   , fgColor = "grey"
-  -- , alpha = 130
+  , alpha = 130
   , position = Top
   , textOffset = -1
   , iconOffset = -1
@@ -60,43 +60,43 @@ config = defaultConfig {
                , Run $ Network "eth1" ["-L","0","-H","32",
                                         "--normal","green","--high","red"] 10
 
-               , Run $ Cpu ["-t", "  cpu: (<fc=#000000,#fb9f7f:0><total>%</fc>)","-H","50","--high","red"] 20
+               , Run $ Cpu ["-t", "  cpu: (<fc=#ff6c6b><total>%</fc>)","-H","50","--high","red"] 20
                , Run $ Memory ["-t","Mem: <usedratio>%"] 10
-               , Run $ Memory ["-t", "  mem: <fc=#000000,#56b6c2:0><used></fc>M (<fc=#000000,#56b6c2:0><usedratio>%</fc>)"] 20
+               , Run $ Memory ["-t", "  mem: <fc=#daa520><used></fc>M (<fc=#ff6c6b><usedratio>%</fc>)"] 20
                , Run $ Swap [] 10
                , Run $ Com "uname" ["-s","-r"] "" 36000
-               , Run $ Date "  %b %d %Y - (<fc=#000000,#c678dd:0>%I:%M</fc>) " "date" 50
+               , Run $ Date "  %b %d %Y - (<fc=#00ff00>%I:%M</fc>) " "date" 50
                , Run HelloWorld
                , Run $ UnsafeStdinReader
-               , Run $ DiskU [("/", " hdd: <fc=#000000,#29AB87:0><free></fc> free")] [] 60
+               , Run $ DiskU [("/", " hdd: <fc=#00ff00><free></fc> free")] [] 60
 
                , Run $ Com "/home/rohits/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
                , Run $ Battery        [ "--template" , "Batt: <acstatus>"
                                          , "--Low"      , "10"        -- units: %
                                          , "--High"     , "80"        -- units: %
-                                         , "--low"      , "#000000,#e75480:0"
-                                         , "--normal"   , "#000000,#e75480:0"
-                                         , "--high"     , "#000000,#e75480:0"
+                                         , "--low"      , "darkred"
+                                         , "--normal"   , "darkorange"
+                                         , "--high"     , "darkgreen"
 
                                          , "--" -- battery specific options
                                                    -- discharging status
                                                    -- , "-o"	, "<left>% (<timeleft>)"
-                                                   , "-o"   , "<fc=#000000,#e75480:0><left>%</fc>"
+                                                   , "-o"   , "<left>%"
                                                    -- AC "on" status
-                                                   , "-O"   , "<left>% <fc=#000000,#e75480:0>Charging</fc>"
+                                                   , "-O"   , "<left>% <fc=#dAA520>Charging</fc>"
                                                    -- charged status
-                                                   , "-i"   , "<fc=#000000,#e75480:0>Charged</fc>"
+                                                   , "-i"   , "<fc=#006000>Charged</fc>"
                              ] 50
               ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = "<fc=#000000,#fb9f7f:0><action=`alacritty -e htop`>%cpu%</action></fc>\
-			   \<fc=#000000,#29AB87:0><action=`gparted`>%disku%</action></fc>\
-               \<fc=#000000,#56b6c2:0><action=`alacritty -e htop`>%memory%</action></fc>  }\
-               \%UnsafeStdinReader% { \
-			   \<fc=#000000,#e75480:0><action=`stacer`>%battery%</action></fc>\
-			   \<fc=#000000,#c678dd:0><action=`gsimplecal`>%date%</action></fc>\
-			   \%trayerpad% "
+  , template = "<fc=#ecbe7b><action=`alacritty -e htop`>%cpu%</action></fc> |\
+			   \ <fc=#a9a1e1><action=`gparted`>%disku%</action></fc> \
+               \ <fc=#cc8899><action=`alacritty -e htop`>%memory%</action></fc>|  }\
+               \ %UnsafeStdinReader% { \
+			   \ <fc=#98be65><action=`stacer`>%battery%</action></fc> |\
+			   \ <fc=#46d9ff><action=`gsimplecal`>%date%</action></fc> \
+			   \ %trayerpad% "
 }
 
 main :: IO ()
