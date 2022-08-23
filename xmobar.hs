@@ -32,13 +32,12 @@ instance Exec HelloWorld where
 
 config :: Config
 config = defaultConfig {
-  font = "xft:Sans Mono-9"
+  font = "xft:Sans Mono-12"
   , additionalFonts = []
   , borderColor = "black"
   , border = TopB
   , bgColor = "#D98695"
-  -- , bgColor = "#C8509B"
-  , fgColor = "grey"
+  , fgColor = "#ffffff"
   -- , alpha = 130
   , position = Top
   , textOffset = -1
